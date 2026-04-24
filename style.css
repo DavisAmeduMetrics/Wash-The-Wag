@@ -1,3 +1,4 @@
+/* --- VARIABLES --- */
 :root {
     --pink: #f8c2d1;
     --creme: #fdf5e6;
@@ -15,7 +16,7 @@ body {
     background: repeating-linear-gradient(45deg, var(--creme), var(--creme) 15px, var(--white) 15px, var(--white) 30px);
 }
 
-/* NAVIGATION */
+/* --- NAVIGATION & PAW MENU --- */
 .nav-container {
     display: flex;
     justify-content: space-between;
@@ -30,12 +31,24 @@ body {
 
 .logo { font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: bold; color: var(--pink); }
 
-.paw-menu-wrapper { position: relative; }
+.paw-menu-wrapper { 
+    position: relative; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
 .paw-label {
-    position: absolute; top: -22px; right: 0; font-size: 0.65rem;
-    font-weight: bold; color: var(--pink); text-transform: uppercase;
-    letter-spacing: 1px; animation: pulseText 2s infinite;
+    position: absolute; 
+    top: -22px; 
+    right: 0; 
+    font-size: 0.65rem;
+    font-weight: bold; 
+    color: var(--pink); 
+    text-transform: uppercase;
+    letter-spacing: 1px; 
+    white-space: nowrap;
+    animation: pulseText 2s infinite;
 }
 
 @keyframes pulseText { 0%, 100% { opacity: 0.5; } 50% { opacity: 1; } }
@@ -43,9 +56,8 @@ body {
 .paw-toggle img { height: 48px; cursor: pointer; transition: 0.3s; }
 .paw-toggle:hover { transform: scale(1.1); }
 
-/* MENU OVERLAY & GLINT */
 .menu-overlay {
-    position: absolute; right: 0; top: 75px; background: white; 
+    position: absolute; right: 0; top: 65px; background: white; 
     border: 3px solid var(--pink); border-radius: 12px; width: 240px;
     transform: scale(0); transform-origin: top right; opacity: 0; transition: 0.4s;
 }
@@ -66,7 +78,7 @@ body {
     position: relative; overflow: hidden; transition: 0.3s;
 }
 
-.menu-overlay a:hover { color: var(--pink); padding-right: 30px; }
+.menu-overlay a:hover { color: var(--pink); background-color: #fffafa; padding-right: 30px; }
 
 .menu-overlay a::after {
     content: ''; position: absolute; top: 0; left: -100%; width: 100%;
@@ -75,22 +87,23 @@ body {
 
 .menu-overlay a:hover::after { left: 100%; transition: 0.6s; }
 
-/* HERO */
+/* --- HERO --- */
 .hero { background: var(--pink); color: white; padding: 80px 5%; text-align: center; border-bottom: 8px solid white; }
+.hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 8vw, 4rem); margin: 0; }
 .btn-main { display: inline-block; margin-top: 25px; padding: 16px 45px; background: white; color: var(--pink); text-decoration: none; border-radius: 50px; font-weight: bold; transition: 0.3s; }
 
-/* PRICING GRID */
+/* --- PRICING GRID --- */
 .pricing-section { padding: 60px 5%; text-align: center; }
 .pricing-grid { display: flex; justify-content: center; align-items: center; gap: 30px; flex-wrap: wrap; margin-top: 100px; padding-bottom: 60px; }
 .dog-card { position: relative; cursor: pointer; width: 180px; text-align: center; margin-bottom: 40px; }
 .dog-card img { filter: grayscale(1); opacity: 0.4; transition: 0.4s; display: block; margin: 0 auto; }
 
-/* SCALING & ORIENTATION */
-.x-small img { width: 70px; transform: scaleX(-1); }
-.small img   { width: 118px; }
-.medium img  { width: 145px; }
-.large img   { width: 180px; }
-.x-large img { width: 210px; }
+/* SCALING UPDATED */
+.x-small img { width: 70px; transform: scaleX(-1); } /* Yorkie */
+.small img   { width: 135px; }                       /* Weslie */
+.medium img  { width: 155px; }                       /* Shepherd */
+.large img   { width: 185px; }                       /* Terrier */
+.x-large img { width: 215px; }                       /* Boxer */
 
 .dog-card:hover img { filter: grayscale(0) sepia(1) hue-rotate(-50deg) saturate(3); opacity: 1; }
 .x-small:hover img { transform: scaleX(-1); }
@@ -109,18 +122,18 @@ body {
 .weight-bubble { bottom: -10px; background: var(--dark); } 
 .dog-card:hover .weight-bubble { transform: translateX(-50%) scale(1) translateY(25px); opacity: 1; }
 
-/* TESTIMONIALS */
-.testimonials-section { padding: 60px 5%; text-align: center; background: rgba(255, 255, 255, 0.5); }
-.reviews-grid { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin: 30px 0; }
+.dog-card h3 { margin: 15px 0 5px 0; color: var(--pink); font-size: 0.9rem; text-transform: uppercase; font-weight: 700; }
+
+/* --- MEMBERSHIP & REVIEWS --- */
+.membership-card { background: white; border: 5px solid var(--pink); padding: 40px; border-radius: 20px; text-align: center; max-width: 500px; margin: 40px auto; position: relative; }
+.testimonials-section { padding: 60px 5%; text-align: center; }
 .review-card { background: white; padding: 30px; border-radius: 15px; border-left: 5px solid var(--pink); max-width: 350px; text-align: left; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
 .reviewer { display: block; margin-top: 15px; font-weight: bold; color: var(--pink); }
-
-.review-links { display: flex; justify-content: center; gap: 15px; }
+.review-links { display: flex; justify-content: center; gap: 15px; margin-top: 20px; }
 .review-btn { padding: 12px 25px; border-radius: 50px; text-decoration: none; color: white; font-weight: bold; transition: 0.3s; }
 .review-btn.google { background: #4285F4; }
 .review-btn.yelp { background: #d32323; }
-.review-btn:hover { transform: scale(1.05); }
 
-/* FOOTER */
+/* --- FOOTER --- */
 .flex-container { display: flex; gap: 30px; padding: 40px 5%; flex-wrap: wrap; }
 .booking-widget, .map-container { flex: 1; min-width: 320px; background: white; padding: 30px; border-radius: 20px; border: 2px solid var(--pink); }
