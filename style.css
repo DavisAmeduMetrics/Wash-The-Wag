@@ -12,11 +12,10 @@ body {
     margin: 0;
     font-family: 'Montserrat', sans-serif;
     color: var(--dark);
-    /* Boutique Pinstripe Background */
     background: repeating-linear-gradient(45deg, var(--creme), var(--creme) 15px, var(--white) 15px, var(--white) 30px);
 }
 
-/* NAVIGATION & PAW MENU */
+/* NAVIGATION */
 .nav-container {
     display: flex;
     justify-content: space-between;
@@ -30,64 +29,72 @@ body {
 }
 
 .logo { font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: bold; color: var(--pink); }
-
-.paw-toggle img { height: 45px; cursor: pointer; transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+.paw-toggle img { height: 45px; cursor: pointer; transition: 0.3s; }
 .paw-toggle:hover { transform: scale(1.15) rotate(10deg); }
 
 .menu-overlay {
     position: absolute; right: 5%; top: 75px; background: white; 
     border: 3px solid var(--pink); border-radius: 12px; width: 240px;
     transform: scale(0); transform-origin: top right; opacity: 0; transition: 0.4s;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
 }
 .menu-overlay.active { transform: scale(1); opacity: 1; }
-.menu-overlay a { display: block; padding: 15px 20px; text-decoration: none; color: var(--dark); font-weight: bold; border-bottom: 1px solid var(--creme); text-align: right; transition: 0.3s; }
-.menu-overlay a:last-child { border-bottom: none; }
-.menu-overlay a:hover { background: var(--pink); color: white; padding-right: 30px; }
+.menu-overlay a { display: block; padding: 15px 20px; text-decoration: none; color: var(--dark); font-weight: bold; text-align: right; border-bottom: 1px solid var(--creme); }
+.menu-overlay a:hover { background: var(--pink); color: white; }
 
 /* HERO */
-.hero { background: var(--pink); color: white; padding: 100px 5%; text-align: center; border-bottom: 8px solid white; }
-.hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 8vw, 4.5rem); margin: 0; letter-spacing: 2px; }
-.btn-main { display: inline-block; margin-top: 25px; padding: 16px 45px; background: white; color: var(--pink); text-decoration: none; border-radius: 50px; font-weight: bold; transition: 0.3s; box-shadow: 0 4px 0px #e0abb9; }
-.btn-main:hover { transform: translateY(-3px); box-shadow: 0 7px 15px rgba(0,0,0,0.1); }
+.hero { background: var(--pink); color: white; padding: 80px 5%; text-align: center; border-bottom: 8px solid white; }
+.btn-main { display: inline-block; margin-top: 25px; padding: 16px 45px; background: white; color: var(--pink); text-decoration: none; border-radius: 50px; font-weight: bold; transition: 0.3s; }
 
-/* PRICING GRAPHICS */
-.pricing-section { padding: 80px 5%; text-align: center; }
-.pricing-grid { display: flex; justify-content: center; align-items: flex-end; gap: 50px; flex-wrap: wrap; margin-top: 70px; }
-.dog-card { position: relative; cursor: pointer; }
+/* PRICING GRID */
+.pricing-section { padding: 60px 5%; text-align: center; }
+.pricing-grid { display: flex; justify-content: center; align-items: flex-end; gap: 25px; flex-wrap: wrap; margin-top: 70px; }
 
-/* Image Normalization */
-.dog-card img { filter: grayscale(1); opacity: 0.6; transition: 0.4s ease-out; }
-.small-dog img { width: 110px; transform: scaleX(-1); } /* Force Yorkie facing left */
-.medium-dog img { width: 165px; }
-.large-dog img { width: 220px; }
+.dog-card { position: relative; cursor: pointer; width: 180px; transition: 0.3s; }
+.dog-card img { filter: grayscale(1); opacity: 0.5; transition: 0.4s; margin-bottom: 10px; }
 
+/* SPECIFIC SIZES & ORIENTATION */
+.x-small img { width: 70px; transform: scaleX(-1); } /* Yorkie flipped */
+.small img   { width: 100px; }
+.medium img  { width: 135px; }
+.large img   { width: 170px; }
+.x-large img { width: 200px; }
+
+/* HOVER ANIMATIONS */
 .dog-card:hover img { 
     filter: grayscale(0) sepia(1) hue-rotate(-50deg) saturate(3); 
     opacity: 1; 
     transform: translateY(-15px); 
 }
-.small-dog:hover img { transform: translateY(-15px) scaleX(-1); }
+/* Re-apply flip for x-small on hover */
+.x-small:hover img { transform: translateY(-15px) scaleX(-1); }
 
+/* PRICE BUBBLE FLYOUT */
 .price-bubble {
-    position: absolute; top: -60px; left: 50%; transform: translateX(-50%) scale(0);
-    background: var(--pink); color: white; padding: 12px 24px; border-radius: 30px; 
-    opacity: 0; transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); font-weight: bold;
+    position: absolute; top: -50px; left: 50%; transform: translateX(-50%) scale(0);
+    background: var(--pink); color: white; padding: 10px 20px; border-radius: 30px; 
+    opacity: 0; transition: 0.4s; font-weight: bold; z-index: 10;
 }
 .dog-card:hover .price-bubble { transform: translateX(-50%) scale(1); opacity: 1; }
-.dog-card h3 { margin-top: 20px; text-transform: uppercase; letter-spacing: 1px; color: var(--pink); font-size: 0.9rem; }
 
-/* MEMBERSHIP */
-.membership-card { background: white; border: 5px solid var(--pink); padding: 50px; border-radius: 25px; text-align: center; max-width: 500px; margin: 40px auto; position: relative; box-shadow: 0 15px 40px rgba(0,0,0,0.05); }
-.badge { position: absolute; top: -18px; left: 50%; transform: translateX(-50%); background: var(--pink); color: white; padding: 6px 20px; border-radius: 20px; font-weight: bold; font-size: 0.85rem; }
-.price { font-size: 3rem; font-weight: bold; margin: 10px 0; color: var(--pink); }
-.price span { font-size: 1rem; color: #999; }
-.benefit-list { list-style: none; padding: 0; text-align: left; margin: 30px 0; }
-.benefit-list li { padding: 12px 0; border-bottom: 1px solid var(--creme); font-weight: 500; }
-.btn-alt { display: inline-block; padding: 14px 40px; background: var(--pink); color: white; text-decoration: none; border-radius: 50px; font-weight: bold; transition: 0.3s; }
-.btn-alt:hover { opacity: 0.9; transform: scale(1.02); }
+/* WEIGHT DEFINITION STYLING */
+.weight-def {
+    margin: 5px 0 0 0;
+    font-size: 0.75rem;
+    color: #888;
+    transition: all 0.3s ease; /* Smooth growth transition */
+}
 
-/* FOOTER */
-.flex-container { display: flex; gap: 40px; padding: 60px 5%; flex-wrap: wrap; background: rgba(255,255,255,0.6); }
-.booking-widget, .map-container { flex: 1; min-width: 320px; background: white; padding: 40px; border-radius: 20px; border: 2px solid var(--pink); }
-.booksy-placeholder { height: 150px; background: var(--creme); border: 2px dashed var(--pink); display: flex; align-items: center; justify-content: center; border-radius: 10px; margin-top: 20px; font-weight: bold; color: var(--pink); }
+.dog-card h3 { margin: 15px 0 5px 0; color: var(--pink); font-size: 0.9rem; text-transform: uppercase; }
+
+/* THE GROWTH EFFECT */
+.dog-card:hover .weight-def {
+    transform: scale(1.2); /* Grow by 20% */
+    color: var(--pink);    /* Highlight pink */
+    font-weight: bold;
+}
+
+/* MEMBERSHIP & FOOTER */
+.membership-card { background: white; border: 5px solid var(--pink); padding: 40px; border-radius: 20px; text-align: center; max-width: 500px; margin: 40px auto; position: relative; }
+.price { font-size: 3rem; font-weight: bold; color: var(--pink); margin: 10px 0; }
+.flex-container { display: flex; gap: 30px; padding: 40px 5%; flex-wrap: wrap; }
+.booking-widget, .map-container { flex: 1; min-width: 320px; background: white; padding: 30px; border-radius: 20px; border: 2px solid var(--pink); }
