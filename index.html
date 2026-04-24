@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wash the Wag | Baltimore Dog Grooming</title>
+    <style>
+        /* --- 1. BRAND THEME & COLORS --- */
+        :root {
+            --brand-pink: #f8c2d1;      /* Boutique Pink */
+            --brand-creme: #fdf5e6;     /* Warm Creme */
+            --brand-white: #ffffff;     /* Pure White */
+            --text-dark: #4a4a4a;       /* Soft Charcoal */
+        }
+
+        /* --- 2. BASE STYLING & PINSTRIPES --- */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            color: var(--text-dark);
+            /* Elegant diagonal pinstripe background */
+            background: repeating-linear-gradient(
+                45deg,
+                var(--brand-creme),
+                var(--brand-creme) 10px,
+                var(--brand-white) 10px,
+                var(--brand-white) 20px
+            );
+            min-height: 100vh;
+        }
+
+        /* --- 3. CUSTOM PAW MENU --- */
+        .nav-header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            height: 80px;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            padding: 0 30px;
+            box-sizing: border-box;
+            z-index: 1000;
+        }
+
+        .paw-toggle {
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            z-index: 1001;
+        }
+
+        .paw-toggle:hover {
+            transform: scale(1.1);
+        }
+
+        .paw-toggle img {
+            height: 40px; /* Small like traditional ellipses */
+            display: block;
+        }
+
+        .menu-overlay {
+            position: absolute;
+            top: 70px;
+            right: 30px;
+            background: var(--brand-white);
+            border: 4px solid var(--brand-pink);
+            border-radius: 15px;
+            width: 220px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            /* Hidden by default */
+            transform: scale(0);
+            transform-origin: top right;
+            opacity: 0;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            padding: 10px 0;
+        }
+
+        .menu-overlay.active {
+            transform: scale(1);
+            opacity: 1;
+        }
+
+        .menu-overlay a {
+            display: block;
+            padding: 12px 25px;
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: bold;
+            text-align: right;
+            transition: 0.3s;
+            border-bottom: 1px solid var(--brand-creme);
+        }
+
+        .menu-overlay a:last-child { border-bottom: none; }
+
+        .menu-overlay a:hover {
+            background-color: var(--brand-pink);
+            color: white;
+            padding-right: 35px;
+        }
+
+        /* --- 4. HERO SECTION --- */
+        .hero {
+            background-color: var(--brand-pink);
+            padding: 100px 20px;
+            text-align: center;
+            border-bottom: 10px solid var(--brand-white);
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            color: white;
+            margin: 0;
+            letter-spacing: 5px;
+            text-shadow: 3px 3px 0px rgba(0,0,0,0.05);
+        }
+
+        .hero p {
+            color: white;
+            font-size: 1.2rem;
+            letter-spacing: 2px;
+        }
+
+        /* --- 5. PRICING GRAPHICS SECTION --- */
+        .pricing-section {
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .pricing-grid {
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            gap: 60px;
+            flex-wrap: wrap;
+            margin-top: 50px;
+        }
+
+        .dog-card {
+            position: relative;
+            cursor: pointer;
+        }
+
+        .dog-card img {
+            display: block;
+            margin: 0 auto;
+            transition: transform 0.3s ease, filter 0.3s ease;
+            filter: grayscale(1) opacity(0.6);
+        }
+
+        /* Hover effect: Dog turns pink and grows slightly */
+        .dog-card:hover img {
+            filter: grayscale(0) sepia(1) hue-rotate(-50deg) saturate(4);
+            transform: translateY(-5px);
+            opacity: 1;
+        }
+
+        /* Specific sizing for your 3 uploads */
+        .small-dog img { width: 100px; transform: scaleX(-1); } /* Flipping the Yorkie */
+        .medium-dog img { width: 160px; }
+        .large-dog img { width: 220px; }
+
+        /* The Fly-out Price Bubble */
+        .price-bubble {
+            position: absolute;
+            top: -60px;
+            left: 50%;
+            transform: translateX(-50%) scale(0);
+            background: var(--brand-pink);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 50px;
+            font-weight: bold;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            opacity: 0;
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            white-space: nowrap;
+        }
+
+        .dog-card:hover .price-bubble {
+            transform: translateX(-50%) scale(1) translateY(-10px);
+            opacity: 1;
+        }
+
+        .dog-card h3 {
+            margin-top: 20px;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--brand-pink);
+        }
+
+    </style>
+</head>
+<body>
+
+    <header class="nav-header">
+        <div class="paw-toggle" id="pawToggle">
+            <img src="Gemini_Generated_Image_v2qhfjv2qhfjv2qh.jpg" alt="Menu">
+        </div>
+        <nav class="menu-overlay" id="menuOverlay">
+            <a href="#">Home</a>
+            <a href="#">History</a>
+            <a href="#">Services</a>
+            <a href="#">Pricing</a>
+            <a href="#">Location</a>
+            <a href="#">Photos</a>
+            <a href="#">Staff</a>
+            <a href="#">Testimonials</a>
+            <a href="#">Membership</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>WASH THE WAG</h1>
+        <p>EST. 2008 • BALTIMORE, MD</p>
+    </section>
+
+    <section class="pricing-section">
+        <h2>Tailored Grooming Packages</h2>
+        <div class="pricing-grid">
+            
+            <div class="dog-card small-dog">
+                <div class="price-bubble">$45 - $60</div>
+                <img src="yorkie.jpg" alt="Small Dog">
+                <h3>Small Pooch</h3>
+            </div>
+
+            <div class="dog-card medium-dog">
+                <div class="price-bubble">$65 - $80</div>
+                <img src="Australian-cattle-dog.jpg" alt="Medium Dog">
+                <h3>Medium Pooch</h3>
+            </div>
+
+            <div class="dog-card large-dog">
+                <div class="price-bubble">$85 - $110+</div>
+                <img src="boxer.jpg" alt="Large Dog">
+                <h3>Large Pooch</h3>
+            </div>
+
+        </div>
+    </section>
+
+    <script>
+        const pawToggle = document.getElementById('pawToggle');
+        const menuOverlay = document.getElementById('menuOverlay');
+
+        // Toggle menu on click
+        pawToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            menuOverlay.classList.toggle('active');
+        });
+
+        // Close menu if clicking outside
+        document.addEventListener('click', () => {
+            menuOverlay.classList.remove('active');
+        });
+    </script>
+
+</body>
+</html>
