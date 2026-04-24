@@ -104,11 +104,11 @@ body {
 .dog-card img { filter: grayscale(1); opacity: 0.4; transition: 0.4s; display: block; margin: 0 auto; }
 
 /* DOG SCALING */
-.x-small img { width: 70px; transform: scaleX(-1); }
+.x-small img { width: 90px; transform: scaleX(-1); }
 .small img   { width: 135px; } /* WESLIE */
 .medium img  { width: 155px; } /* SHEPHERD */
-.large img   { width: 185px; }
-.x-large img { width: 215px; }
+.large img   { width: 200px; }
+.x-large img { width: 275px; }
 
 .dog-card:hover img { filter: grayscale(0) sepia(1) hue-rotate(-50deg) saturate(3); opacity: 1; }
 .x-small:hover img { transform: scaleX(-1); }
