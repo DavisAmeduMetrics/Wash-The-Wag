@@ -1,6 +1,7 @@
 /* --- VARIABLES --- */
 :root {
     --pink: #f8c2d1;
+    --hot-pink: #ff69b4; /* Brighter pink for flashing */
     --creme: #fdf5e6;
     --white: #ffffff;
     --dark: #4a4a4a;
@@ -38,20 +39,24 @@ body {
     align-items: center;
 }
 
+/* FLASHING PINK LABEL */
 .paw-label {
     position: absolute; 
-    top: -22px; 
+    top: -25px; 
     right: 0; 
-    font-size: 0.65rem;
-    font-weight: bold; 
-    color: var(--pink); 
+    font-size: 0.7rem;
+    font-weight: 800; 
+    color: var(--hot-pink); 
     text-transform: uppercase;
-    letter-spacing: 1px; 
+    letter-spacing: 1.5px; 
     white-space: nowrap;
-    animation: pulseText 2s infinite;
+    animation: periodicFlash 3s infinite; /* Periodically flashes */
 }
 
-@keyframes pulseText { 0%, 100% { opacity: 0.5; } 50% { opacity: 1; } }
+@keyframes periodicFlash {
+    0%, 80%, 100% { opacity: 1; color: var(--hot-pink); }
+    85%, 95% { opacity: 0; color: var(--pink); }
+}
 
 .paw-toggle img { height: 48px; cursor: pointer; transition: 0.3s; }
 .paw-toggle:hover { transform: scale(1.1); }
@@ -98,12 +103,12 @@ body {
 .dog-card { position: relative; cursor: pointer; width: 180px; text-align: center; margin-bottom: 40px; }
 .dog-card img { filter: grayscale(1); opacity: 0.4; transition: 0.4s; display: block; margin: 0 auto; }
 
-/* SCALING UPDATED */
-.x-small img { width: 70px; transform: scaleX(-1); } /* Yorkie */
-.small img   { width: 135px; }                       /* Weslie */
-.medium img  { width: 155px; }                       /* Shepherd */
-.large img   { width: 185px; }                       /* Terrier */
-.x-large img { width: 215px; }                       /* Boxer */
+/* DOG SCALING */
+.x-small img { width: 70px; transform: scaleX(-1); }
+.small img   { width: 135px; } /* WESLIE */
+.medium img  { width: 155px; } /* SHEPHERD */
+.large img   { width: 185px; }
+.x-large img { width: 215px; }
 
 .dog-card:hover img { filter: grayscale(0) sepia(1) hue-rotate(-50deg) saturate(3); opacity: 1; }
 .x-small:hover img { transform: scaleX(-1); }
