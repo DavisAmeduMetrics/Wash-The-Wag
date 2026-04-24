@@ -1,31 +1,21 @@
-/* --- 1. BRAND THEME & VARIABLES --- */
 :root {
-    --pink: #f8c2d1;      /* Brand Pink */
-    --pink-dark: #e0abb9; /* Darker Pink for accents */
-    --creme: #fdf5e6;     /* Warm Background */
+    --pink: #f8c2d1;
+    --creme: #fdf5e6;
     --white: #ffffff;
-    --dark: #4a4a4a;      /* Text color */
+    --dark: #4a4a4a;
 }
 
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 
-/* --- 2. BASE STYLING & PINSTRIPES --- */
 body {
     margin: 0;
     font-family: 'Montserrat', sans-serif;
     color: var(--dark);
-    /* Boutique Pinstripe Background */
-    background: repeating-linear-gradient(
-        45deg, 
-        var(--creme), 
-        var(--creme) 15px, 
-        var(--white) 15px, 
-        var(--white) 30px
-    );
+    background: repeating-linear-gradient(45deg, var(--creme), var(--creme) 15px, var(--white) 15px, var(--white) 30px);
 }
 
-/* --- 3. NAVIGATION & CUSTOM MENU --- */
+/* NAVIGATION */
 .nav-container {
     display: flex;
     justify-content: space-between;
@@ -38,231 +28,99 @@ body {
     box-shadow: 0 2px 10px rgba(0,0,0,0.05);
 }
 
-.logo { 
-    font-family: 'Playfair Display', serif; 
-    font-size: 1.6rem; 
-    font-weight: bold; 
-    color: var(--pink); 
-}
+.logo { font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: bold; color: var(--pink); }
 
-/* Label above the paw icon */
+.paw-menu-wrapper { position: relative; }
+
 .paw-label {
-    position: absolute;
-    top: -22px;
-    right: 0;
-    font-size: 0.65rem;
-    font-weight: bold;
-    color: var(--pink);
-    white-space: nowrap;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    animation: pulseText 2s infinite;
+    position: absolute; top: -22px; right: 0; font-size: 0.65rem;
+    font-weight: bold; color: var(--pink); text-transform: uppercase;
+    letter-spacing: 1px; animation: pulseText 2s infinite;
 }
 
-@keyframes pulseText {
-    0%, 100% { opacity: 0.4; transform: scale(0.95); }
-    50% { opacity: 1; transform: scale(1); }
-}
+@keyframes pulseText { 0%, 100% { opacity: 0.5; } 50% { opacity: 1; } }
 
-.paw-toggle img { 
-    height: 48px; 
-    cursor: pointer; 
-    transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
-}
-.paw-toggle:hover { transform: scale(1.1) rotate(5deg); }
+.paw-toggle img { height: 48px; cursor: pointer; transition: 0.3s; }
+.paw-toggle:hover { transform: scale(1.1); }
 
-/* The Menu Box */
+/* MENU OVERLAY & GLINT */
 .menu-overlay {
-    position: absolute; 
-    right: 5%; 
-    top: 75px; 
-    background: white; 
-    border: 3px solid var(--pink); 
-    border-radius: 12px; 
-    width: 240px;
-    transform: scale(0); 
-    transform-origin: top right; 
-    opacity: 0; 
-    transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    position: absolute; right: 0; top: 75px; background: white; 
+    border: 3px solid var(--pink); border-radius: 12px; width: 240px;
+    transform: scale(0); transform-origin: top right; opacity: 0; transition: 0.4s;
 }
 
 .menu-overlay.active { 
-    transform: scale(1); 
-    opacity: 1; 
+    transform: scale(1); opacity: 1; 
     animation: borderFlash 2s infinite;
 }
 
-@keyframes borderFlash {
-    0%, 100% { border-color: var(--pink); box-shadow: 0 0 5px var(--pink); }
-    50% { border-color: var(--white); box-shadow: 0 0 15px var(--pink); }
+@keyframes borderFlash { 
+    0%, 100% { border-color: var(--pink); } 
+    50% { border-color: white; box-shadow: 0 0 10px var(--pink); } 
 }
 
-/* Menu Options & Glint Effect */
 .menu-overlay a {
-    display: block;
-    padding: 15px 20px;
-    text-decoration: none;
-    color: var(--dark);
-    font-weight: bold;
-    text-align: right;
-    border-bottom: 1px solid var(--creme);
-    position: relative;
-    overflow: hidden;
-    transition: 0.3s;
+    display: block; padding: 15px 20px; text-decoration: none; color: var(--dark);
+    font-weight: bold; text-align: right; border-bottom: 1px solid var(--creme);
+    position: relative; overflow: hidden; transition: 0.3s;
 }
 
-.menu-overlay a:hover {
-    color: var(--pink);
-    background-color: #fffafa;
-    padding-right: 30px;
-}
+.menu-overlay a:hover { color: var(--pink); padding-right: 30px; }
 
 .menu-overlay a::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(
-        90deg, 
-        transparent, 
-        rgba(248, 194, 209, 0.4), 
-        transparent
-    );
-    transition: none;
+    content: ''; position: absolute; top: 0; left: -100%; width: 100%;
+    height: 100%; background: linear-gradient(90deg, transparent, rgba(248, 194, 209, 0.4), transparent);
 }
 
-.menu-overlay a:hover::after {
-    left: 100%;
-    transition: 0.6s;
-}
+.menu-overlay a:hover::after { left: 100%; transition: 0.6s; }
 
-/* --- 4. HERO SECTION --- */
-.hero { 
-    background: var(--pink); 
-    color: white; 
-    padding: 80px 5%; 
-    text-align: center; 
-    border-bottom: 8px solid white; 
-}
-.hero h1 { 
-    font-family: 'Playfair Display', serif; 
-    font-size: clamp(2.5rem, 8vw, 4.5rem); 
-    margin: 0; 
-}
-.btn-main { 
-    display: inline-block; 
-    margin-top: 25px; 
-    padding: 16px 45px; 
-    background: white; 
-    color: var(--pink); 
-    text-decoration: none; 
-    border-radius: 50px; 
-    font-weight: bold; 
-    transition: 0.3s; 
-}
-.btn-main:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+/* HERO */
+.hero { background: var(--pink); color: white; padding: 80px 5%; text-align: center; border-bottom: 8px solid white; }
+.btn-main { display: inline-block; margin-top: 25px; padding: 16px 45px; background: white; color: var(--pink); text-decoration: none; border-radius: 50px; font-weight: bold; transition: 0.3s; }
 
-/* --- 5. PRICING GRID & DOG CARDS --- */
+/* PRICING GRID */
 .pricing-section { padding: 60px 5%; text-align: center; }
-.pricing-grid { 
-    display: flex; 
-    justify-content: center; 
-    align-items: center; 
-    gap: 30px; 
-    flex-wrap: wrap; 
-    margin-top: 100px; 
-    padding-bottom: 80px; 
-}
+.pricing-grid { display: flex; justify-content: center; align-items: center; gap: 30px; flex-wrap: wrap; margin-top: 100px; padding-bottom: 60px; }
+.dog-card { position: relative; cursor: pointer; width: 180px; text-align: center; margin-bottom: 40px; }
+.dog-card img { filter: grayscale(1); opacity: 0.4; transition: 0.4s; display: block; margin: 0 auto; }
 
-.dog-card { 
-    position: relative; 
-    cursor: pointer; 
-    width: 180px; 
-    text-align: center; 
-}
-.dog-card img { 
-    filter: grayscale(1); 
-    opacity: 0.4; 
-    transition: 0.4s; 
-    margin-bottom: 10px; 
-    display: block; 
-    margin: 0 auto; 
-}
+/* SCALING & ORIENTATION */
+.x-small img { width: 70px; transform: scaleX(-1); }
+.small img   { width: 118px; }
+.medium img  { width: 145px; }
+.large img   { width: 180px; }
+.x-large img { width: 210px; }
 
-/* Specific Scale & Flip Logic */
-.x-small img { width: 70px; transform: scaleX(-1); } /* Yorkie Flipped */
-.small img   { width: 118px; }                       /* Weslie Scaled Up */
-.medium img  { width: 145px; }                       /* Shepherd */
-.large img   { width: 180px; }                       /* Terrier */
-.x-large img { width: 210px; }                       /* Boxer */
-
-.dog-card:hover img { 
-    filter: grayscale(0) sepia(1) hue-rotate(-50deg) saturate(3); 
-    opacity: 1; 
-}
+.dog-card:hover img { filter: grayscale(0) sepia(1) hue-rotate(-50deg) saturate(3); opacity: 1; }
 .x-small:hover img { transform: scaleX(-1); }
 
-/* --- 6. FLY-OUT BUBBLES --- */
+/* BUBBLES */
 .price-bubble, .weight-bubble {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%) scale(0);
-    background: var(--pink);
-    color: white;
-    padding: 8px 18px;
-    border-radius: 30px;
-    opacity: 0;
-    transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    font-weight: bold;
-    z-index: 10;
-    white-space: nowrap;
-    font-size: 0.85rem;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    position: absolute; left: 50%; transform: translateX(-50%) scale(0);
+    background: var(--pink); color: white; padding: 8px 18px; border-radius: 30px;
+    opacity: 0; transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    font-weight: bold; z-index: 10; white-space: nowrap; font-size: 0.85rem;
 }
 
-/* TOP FLY-OUT (Price) */
 .price-bubble { top: -45px; }
-.dog-card:hover .price-bubble { 
-    transform: translateX(-50%) scale(1) translateY(-10px); 
-    opacity: 1; 
-}
+.dog-card:hover .price-bubble { transform: translateX(-50%) scale(1) translateY(-10px); opacity: 1; }
 
-/* BOTTOM FLY-OUT (Weights) */
 .weight-bubble { bottom: -10px; background: var(--dark); } 
-.dog-card:hover .weight-bubble { 
-    transform: translateX(-50%) scale(1) translateY(25px); 
-    opacity: 1; 
-}
+.dog-card:hover .weight-bubble { transform: translateX(-50%) scale(1) translateY(25px); opacity: 1; }
 
-.dog-card h3 { 
-    margin: 15px 0 5px 0; 
-    color: var(--pink); 
-    font-size: 0.9rem; 
-    text-transform: uppercase; 
-    font-weight: 700; 
-}
+/* TESTIMONIALS */
+.testimonials-section { padding: 60px 5%; text-align: center; background: rgba(255, 255, 255, 0.5); }
+.reviews-grid { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin: 30px 0; }
+.review-card { background: white; padding: 30px; border-radius: 15px; border-left: 5px solid var(--pink); max-width: 350px; text-align: left; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+.reviewer { display: block; margin-top: 15px; font-weight: bold; color: var(--pink); }
 
-/* --- 7. MEMBERSHIP & INFO --- */
-.membership-card { 
-    background: white; 
-    border: 5px solid var(--pink); 
-    padding: 40px; 
-    border-radius: 20px; 
-    text-align: center; 
-    max-width: 500px; 
-    margin: 40px auto; 
-    position: relative; 
-}
-.price { font-size: 3rem; font-weight: bold; color: var(--pink); margin: 10px 0; }
+.review-links { display: flex; justify-content: center; gap: 15px; }
+.review-btn { padding: 12px 25px; border-radius: 50px; text-decoration: none; color: white; font-weight: bold; transition: 0.3s; }
+.review-btn.google { background: #4285F4; }
+.review-btn.yelp { background: #d32323; }
+.review-btn:hover { transform: scale(1.05); }
+
+/* FOOTER */
 .flex-container { display: flex; gap: 30px; padding: 40px 5%; flex-wrap: wrap; }
-.booking-widget, .map-container { 
-    flex: 1; 
-    min-width: 320px; 
-    background: white; 
-    padding: 30px; 
-    border-radius: 20px; 
-    border: 2px solid var(--pink); 
-}
+.booking-widget, .map-container { flex: 1; min-width: 320px; background: white; padding: 30px; border-radius: 20px; border: 2px solid var(--pink); }
