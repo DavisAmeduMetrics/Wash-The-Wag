@@ -105,7 +105,7 @@ body {
 
 /* DOG SCALING */
 .x-small img { width: 70px; transform: scaleX(-1); }
-.small img   { width: 135px; } /* WESLIE */
+.small img   { width: 170px; } /* WESLIE */
 .medium img  { width: 155px; } /* SHEPHERD */
 .large img   { width: 185px; }
 .x-large img { width: 215px; }
