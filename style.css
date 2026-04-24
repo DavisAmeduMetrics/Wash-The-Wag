@@ -1,0 +1,93 @@
+:root {
+    --pink: #f8c2d1;
+    --creme: #fdf5e6;
+    --white: #ffffff;
+    --dark: #4a4a4a;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    color: var(--dark);
+    /* Boutique Pinstripe Background */
+    background: repeating-linear-gradient(45deg, var(--creme), var(--creme) 15px, var(--white) 15px, var(--white) 30px);
+}
+
+/* NAVIGATION & PAW MENU */
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 5%;
+    background: var(--white);
+    position: sticky;
+    top: 0;
+    z-index: 2000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.logo { font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: bold; color: var(--pink); }
+
+.paw-toggle img { height: 45px; cursor: pointer; transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+.paw-toggle:hover { transform: scale(1.15) rotate(10deg); }
+
+.menu-overlay {
+    position: absolute; right: 5%; top: 75px; background: white; 
+    border: 3px solid var(--pink); border-radius: 12px; width: 240px;
+    transform: scale(0); transform-origin: top right; opacity: 0; transition: 0.4s;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+.menu-overlay.active { transform: scale(1); opacity: 1; }
+.menu-overlay a { display: block; padding: 15px 20px; text-decoration: none; color: var(--dark); font-weight: bold; border-bottom: 1px solid var(--creme); text-align: right; transition: 0.3s; }
+.menu-overlay a:last-child { border-bottom: none; }
+.menu-overlay a:hover { background: var(--pink); color: white; padding-right: 30px; }
+
+/* HERO */
+.hero { background: var(--pink); color: white; padding: 100px 5%; text-align: center; border-bottom: 8px solid white; }
+.hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 8vw, 4.5rem); margin: 0; letter-spacing: 2px; }
+.btn-main { display: inline-block; margin-top: 25px; padding: 16px 45px; background: white; color: var(--pink); text-decoration: none; border-radius: 50px; font-weight: bold; transition: 0.3s; box-shadow: 0 4px 0px #e0abb9; }
+.btn-main:hover { transform: translateY(-3px); box-shadow: 0 7px 15px rgba(0,0,0,0.1); }
+
+/* PRICING GRAPHICS */
+.pricing-section { padding: 80px 5%; text-align: center; }
+.pricing-grid { display: flex; justify-content: center; align-items: flex-end; gap: 50px; flex-wrap: wrap; margin-top: 70px; }
+.dog-card { position: relative; cursor: pointer; }
+
+/* Image Normalization */
+.dog-card img { filter: grayscale(1); opacity: 0.6; transition: 0.4s ease-out; }
+.small-dog img { width: 110px; transform: scaleX(-1); } /* Force Yorkie facing left */
+.medium-dog img { width: 165px; }
+.large-dog img { width: 220px; }
+
+.dog-card:hover img { 
+    filter: grayscale(0) sepia(1) hue-rotate(-50deg) saturate(3); 
+    opacity: 1; 
+    transform: translateY(-15px); 
+}
+.small-dog:hover img { transform: translateY(-15px) scaleX(-1); }
+
+.price-bubble {
+    position: absolute; top: -60px; left: 50%; transform: translateX(-50%) scale(0);
+    background: var(--pink); color: white; padding: 12px 24px; border-radius: 30px; 
+    opacity: 0; transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); font-weight: bold;
+}
+.dog-card:hover .price-bubble { transform: translateX(-50%) scale(1); opacity: 1; }
+.dog-card h3 { margin-top: 20px; text-transform: uppercase; letter-spacing: 1px; color: var(--pink); font-size: 0.9rem; }
+
+/* MEMBERSHIP */
+.membership-card { background: white; border: 5px solid var(--pink); padding: 50px; border-radius: 25px; text-align: center; max-width: 500px; margin: 40px auto; position: relative; box-shadow: 0 15px 40px rgba(0,0,0,0.05); }
+.badge { position: absolute; top: -18px; left: 50%; transform: translateX(-50%); background: var(--pink); color: white; padding: 6px 20px; border-radius: 20px; font-weight: bold; font-size: 0.85rem; }
+.price { font-size: 3rem; font-weight: bold; margin: 10px 0; color: var(--pink); }
+.price span { font-size: 1rem; color: #999; }
+.benefit-list { list-style: none; padding: 0; text-align: left; margin: 30px 0; }
+.benefit-list li { padding: 12px 0; border-bottom: 1px solid var(--creme); font-weight: 500; }
+.btn-alt { display: inline-block; padding: 14px 40px; background: var(--pink); color: white; text-decoration: none; border-radius: 50px; font-weight: bold; transition: 0.3s; }
+.btn-alt:hover { opacity: 0.9; transform: scale(1.02); }
+
+/* FOOTER */
+.flex-container { display: flex; gap: 40px; padding: 60px 5%; flex-wrap: wrap; background: rgba(255,255,255,0.6); }
+.booking-widget, .map-container { flex: 1; min-width: 320px; background: white; padding: 40px; border-radius: 20px; border: 2px solid var(--pink); }
+.booksy-placeholder { height: 150px; background: var(--creme); border: 2px dashed var(--pink); display: flex; align-items: center; justify-content: center; border-radius: 10px; margin-top: 20px; font-weight: bold; color: var(--pink); }
