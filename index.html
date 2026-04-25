@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wash the Wag | Baltimore Dog Grooming & Self-Wash</title>
+    <title>Wash the Wag | Baltimore Dog Grooming</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
 </head>
@@ -11,16 +11,13 @@
 
     <nav class="nav-container">
         <div class="logo">WASH THE WAG</div>
-        
         <div class="nav-right-section">
             <div class="paw-menu-wrapper">
                 <span class="paw-label">Click me for more!</span>
-                
                 <div class="paw-toggle raised-button" id="pawToggle">
                     <img src="Gemini_Generated_Image_v2qhfjv2qhfjv2qh.png" alt="Menu Paw">
                     <span class="menu-text">MENU</span>
                 </div>
-                
                 <div class="menu-overlay" id="menuOverlay">
                     <a href="#home">Home</a>
                     <a href="#services">Services</a>
@@ -34,48 +31,70 @@
     </nav>
 
     <header class="hero" id="home">
-        <div class="hero-content">
-            <h1>Wash the Wag</h1>
-            <p>Baltimore's Premier Self-Service & Full-Service Grooming</p>
-            <a href="#booking" class="btn-main">Book an Appointment</a>
-        </div>
+        <h1>Wash the Wag</h1>
+        <p>Baltimore's Premier Self-Service & Full-Service Grooming</p>
+        <a href="#booking" class="btn-main">Book an Appointment</a>
     </header>
 
     <section class="pricing-section" id="services">
-        <h2 class="section-title">Grooming Rates</h2>
+        <h2 class="section-title">Grooming Packages</h2>
+        <p>Click a pup to view service details and pricing</p>
+        
         <div class="pricing-grid">
-            <div class="dog-card x-small">
-                <div class="price-bubble">$45+</div>
+            <div class="dog-card x-small" data-size="X-Small" data-basic="35" data-plus="70">
+                <div class="price-bubble">From $35</div>
                 <img src="yorkie.png" alt="Yorkie">
                 <h3>X-Small</h3>
                 <div class="weight-bubble">Under 10 lbs</div>
             </div>
-            <div class="dog-card small">
-                <div class="price-bubble">$55+</div>
+
+            <div class="dog-card small" data-size="Small" data-basic="45" data-plus="80">
+                <div class="price-bubble">From $45</div>
                 <img src="weslie.png" alt="Weslie">
                 <h3>Small</h3>
                 <div class="weight-bubble">Up to 25 lbs</div>
             </div>
-            <div class="dog-card medium">
-                <div class="price-bubble">$70+</div>
+
+            <div class="dog-card medium" data-size="Medium" data-basic="55" data-plus="95">
+                <div class="price-bubble">From $55</div>
                 <img src="Australian-cattle-dog (1).png" alt="Shepherd">
                 <h3>Medium</h3>
                 <div class="weight-bubble">Up to 50 lbs</div>
             </div>
-            <div class="dog-card large">
-                <div class="price-bubble">$85+</div>
+
+            <div class="dog-card large" data-size="Large" data-basic="70" data-plus="115">
+                <div class="price-bubble">From $70</div>
                 <img src="terrier.png" alt="Terrier">
                 <h3>Large</h3>
                 <div class="weight-bubble">Up to 75 lbs</div>
             </div>
-            <div class="dog-card x-large">
-                <div class="price-bubble">$100+</div>
+
+            <div class="dog-card x-large" data-size="X-Large" data-basic="80" data-plus="125">
+                <div class="price-bubble">From $80</div>
                 <img src="boxer.png" alt="Boxer">
                 <h3>X-Large</h3>
                 <div class="weight-bubble">Over 75 lbs</div>
             </div>
         </div>
     </section>
+
+    <div id="pricingModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2 id="modalTitle">Dog Size</h2>
+            <div class="modal-flex">
+                <div class="package-box">
+                    <h3>Basic $<span id="basicPrice">0</span></h3>
+                    <p>Includes: shampoo bath, ear cleaning, nail trimming, gland expression, and brushing. De-matting, flea-treatment, and check up.</p>
+                </div>
+                <div class="package-box plus">
+                    <h3>Plus $<span id="plusPrice">0</span></h3>
+                    <p>All in the basic plus a <strong>haircut!</strong></p>
+                </div>
+            </div>
+            <a href="#booking" class="btn-alt close-modal">Book This Size</a>
+        </div>
+    </div>
 
     <section class="membership-section" id="membership">
         <div class="membership-card">
@@ -87,38 +106,25 @@
                 <li>✓ Professional Shampoos & Conditioners</li>
                 <li>✓ High-Velocity Dryers & Aprons</li>
             </ul>
-            <a href="#booking" class="btn-alt">Join the Club</a>
         </div>
     </section>
 
     <section class="testimonials-section" id="testimonials">
         <h2 class="section-title">Happy Customers</h2>
-        <div class="reviews-grid">
-            <div class="review-card">
-                <p>"Best grooming in Baltimore! My dog always leaves happy and smelling amazing."</p>
-                <span class="reviewer">- Sarah M. (Google Review)</span>
-            </div>
-            <div class="review-card">
-                <p>"The self-wash is so convenient. They provide everything you need!"</p>
-                <span class="reviewer">- James T. (Yelp Review)</span>
-            </div>
-        </div>
         <div class="review-links">
-            <a href="https://share.google/sIPBGwKdgL2nM12L5" target="_blank" class="review-btn google">View Google Reviews</a>
-            <a href="https://www.yelp.com/biz/wash-the-wag-baltimore" target="_blank" class="review-btn yelp">View Yelp Reviews</a>
+            <a href="https://share.google/sIPBGwKdgL2nM12L5" target="_blank" class="review-btn google">Google Reviews</a>
+            <a href="https://www.yelp.com/biz/wash-the-wag-baltimore" target="_blank" class="review-btn yelp">Yelp Reviews</a>
         </div>
     </section>
 
     <section class="info-section" id="location">
         <div class="flex-container">
             <div class="booking-widget" id="booking">
-                <h2>Secure Your Spot</h2>
-                <div class="booksy-placeholder"><p>Booksy Widget Here</p></div>
+                <h2>Ready to Book?</h2>
+                <div class="booksy-placeholder">Booksy Widget Here</div>
             </div>
             <div class="map-container">
-                <h2>Visit Us</h2>
-                <p>3508-10 Harford Road, Baltimore MD</p>
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3086.581530635198!2d-76.5866164234032!3d39.313023021816785!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c80467b7e62a6b%3A0x6796c568686e08ba!2s3508%20Harford%20Rd%2C%20Baltimore%2C%20MD%2021218!5e0!3m2!1sen!2sus!4v1711200000000" width="100%" height="300" style="border:0; border-radius: 15px;" allowfullscreen="" loading="lazy"></iframe>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3086.536780775586!2d-76.586411!3d39.321589!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c8069502690f31%3A0xc06886e0682121e7!2s3508%20Harford%20Rd%2C%20Baltimore%2C%20MD%2021218!5e0!3m2!1sen!2sus!4v17150000000005" width="100%" height="300" style="border:0; border-radius: 15px;" allowfullscreen="" loading="lazy"></iframe>
             </div>
         </div>
     </section>
