@@ -16,9 +16,10 @@ body {
     background: repeating-linear-gradient(45deg, var(--creme), var(--creme) 15px, var(--white) 15px, var(--white) 30px);
 }
 
+/* NAVIGATION LAYOUT */
 .nav-container {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-between; /* Pushes Logo left and Menu right */
     align-items: center;
     padding: 15px 5%;
     background: var(--white);
@@ -30,66 +31,79 @@ body {
 
 .logo { font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: bold; color: var(--pink); }
 
+.nav-right-section {
+    display: flex;
+    align-items: center;
+}
+
 .paw-menu-wrapper { 
     position: relative; 
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-end; /* Align label to the right */
 }
 
 .paw-label {
     position: absolute; 
-    top: -30px; 
-    right: 0; 
-    font-size: 0.7rem;
+    top: -28px; 
+    right: 5px; 
+    font-size: 0.65rem;
     font-weight: 800; 
     color: var(--hot-pink); 
     text-transform: uppercase;
-    letter-spacing: 1.5px; 
+    letter-spacing: 1px; 
     white-space: nowrap;
     animation: periodicFlash 3s infinite;
 }
 
 @keyframes periodicFlash {
     0%, 80%, 100% { opacity: 1; color: var(--hot-pink); }
-    85%, 95% { opacity: 0; color: var(--pink); }
+    85%, 95% { opacity: 0; }
 }
 
-/* THE RAISED BUTTON */
+/* THE RAISED RECTANGLE BUTTON */
 .paw-toggle.raised-button {
     background: var(--white);
-    border-radius: 50%;
-    padding: 10px;
+    border-radius: 12px; /* Rounded Rectangle instead of Circle */
+    padding: 8px 15px;
     display: flex;
     align-items: center;
-    justify-content: center;
+    gap: 10px;
     cursor: pointer;
     border: 2px solid var(--pink);
-    box-shadow: 4px 4px 8px rgba(0,0,0,0.1), -2px -2px 6px rgba(255,255,255,0.8);
-    transition: all 0.2s ease;
+    box-shadow: 4px 4px 0px var(--pink); /* Solid 3D edge look */
+    transition: all 0.1s ease;
 }
 
-.paw-toggle.raised-button img { height: 40px; }
+.menu-text {
+    font-weight: 800;
+    font-size: 0.8rem;
+    color: var(--pink);
+    letter-spacing: 1px;
+}
+
+.paw-toggle.raised-button img { height: 30px; }
 
 .paw-toggle.raised-button:hover {
-    transform: translateY(-2px) scale(1.05);
-    box-shadow: 6px 6px 12px rgba(0,0,0,0.12), -3px -3px 8px rgba(255,255,255,0.9);
+    transform: translate(-1px, -1px);
+    box-shadow: 6px 6px 0px var(--pink);
 }
 
 .paw-toggle.raised-button:active {
-    transform: translateY(1px) scale(0.98);
-    box-shadow: inset 2px 2px 5px rgba(0,0,0,0.1), inset -2px -2px 5px rgba(255,255,255,0.5);
+    transform: translate(3px, 3px);
+    box-shadow: 0px 0px 0px var(--pink);
 }
 
+/* OVERLAY */
 .menu-overlay {
-    position: absolute; right: 0; top: 75px; background: white; 
+    position: absolute; right: 0; top: 65px; background: white; 
     border: 3px solid var(--pink); border-radius: 12px; width: 240px;
     transform: scale(0); transform-origin: top right; opacity: 0; transition: 0.4s;
 }
 
 .menu-overlay.active { transform: scale(1); opacity: 1; animation: borderFlash 2s infinite; }
 
-@keyframes borderFlash { 0%, 100% { border-color: var(--pink); } 50% { border-color: white; box-shadow: 0 0 10px var(--pink); } }
+@keyframes borderFlash { 0%, 100% { border-color: var(--pink); } 50% { border-color: white; } }
 
 .menu-overlay a {
     display: block; padding: 15px 20px; text-decoration: none; color: var(--dark);
@@ -106,10 +120,7 @@ body {
 
 .menu-overlay a:hover::after { left: 100%; transition: 0.6s; }
 
-.hero { background: var(--pink); color: white; padding: 80px 5%; text-align: center; border-bottom: 8px solid white; }
-.hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 8vw, 4rem); margin: 0; }
-.btn-main { display: inline-block; margin-top: 25px; padding: 16px 45px; background: white; color: var(--pink); text-decoration: none; border-radius: 50px; font-weight: bold; transition: 0.3s; }
-
+/* PRICING STUFF */
 .pricing-section { padding: 60px 5%; text-align: center; }
 .pricing-grid { display: flex; justify-content: center; align-items: center; gap: 30px; flex-wrap: wrap; margin-top: 100px; padding-bottom: 60px; }
 .dog-card { position: relative; cursor: pointer; width: 180px; text-align: center; margin-bottom: 40px; }
@@ -127,16 +138,21 @@ body {
 .price-bubble, .weight-bubble {
     position: absolute; left: 50%; transform: translateX(-50%) scale(0);
     background: var(--pink); color: white; padding: 8px 18px; border-radius: 30px;
-    opacity: 0; transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    font-weight: bold; z-index: 10; white-space: nowrap; font-size: 0.85rem;
+    opacity: 0; transition: 0.4s; font-weight: bold; z-index: 10; white-space: nowrap; font-size: 0.85rem;
 }
 
 .price-bubble { top: -45px; }
 .dog-card:hover .price-bubble { transform: translateX(-50%) scale(1) translateY(-10px); opacity: 1; }
-
 .weight-bubble { bottom: -10px; background: var(--dark); } 
 .dog-card:hover .weight-bubble { transform: translateX(-50%) scale(1) translateY(25px); opacity: 1; }
 
+/* REVIEWS */
+.review-btn { padding: 12px 25px; border-radius: 50px; text-decoration: none; color: white; font-weight: bold; transition: 0.3s; display: inline-block; }
+.review-btn.google { background: #4285F4; }
+.review-btn.yelp { background: #d32323; }
+.review-btn:hover { transform: scale(1.05); }
+
+/* MISC */
 .membership-card { background: white; border: 5px solid var(--pink); padding: 40px; border-radius: 20px; text-align: center; max-width: 500px; margin: 40px auto; position: relative; }
 .flex-container { display: flex; gap: 30px; padding: 40px 5%; flex-wrap: wrap; }
 .booking-widget, .map-container { flex: 1; min-width: 320px; background: white; padding: 30px; border-radius: 20px; border: 2px solid var(--pink); }
